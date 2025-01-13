@@ -8,53 +8,29 @@
 import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-    Button,
     SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    useColorScheme,
-    View,
+    StyleSheet
 } from 'react-native';
 import Greeting from './components/Greeting';
 import Box from './components/Box';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-
+import Counter from "./components/Counter";
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  const [visible, setVisible] = useState(true);
+    const [count, setCount] = useState(0);
 
-  const onPress = () => {
-      setVisible(!visible);
-  }
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  const name = 'JSX';
-
+    const increase = () => setCount(count + 1);
+    const decrease = () => setCount(count - 1);
   return (
-    <SafeAreaView style={backgroundStyle}>
-        <Button title={'토글'} onPress={onPress} />
-        {visible ? <Box rounded={true} /> : null }
-
+    <SafeAreaView style={styles.full}>
+        <Counter count={count} onIncrease={increase} onDecrease={decrease} />
     </SafeAreaView>
   );
 }
+
+const  styles = StyleSheet.create({
+    full: {
+        flex: 1,
+    },
+});
 
 export default App;
