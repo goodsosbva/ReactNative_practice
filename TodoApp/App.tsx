@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     StatusBar,
     StyleSheet,
@@ -14,10 +14,13 @@ import {
     Platform
 } from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-community/async-storage";
+
 import DateHead from './components/DateHead';
 import AddTodo from "./components/AddTodo";
 import Empty from "./components/Empty";
 import TodoList from "./components/TodoList";
+import todosStorage from './storages/todosStorage';
 
 function App(): React.JSX.Element {
      const today  = new Date();
@@ -28,7 +31,22 @@ function App(): React.JSX.Element {
          {id: 3, text: '투두리시트 만들어보기', done: false},
      ]);
 
-     const onInsert = (text: any) => {
+     // 불러오기
+    useEffect(() => {
+        todosStorage
+            .get()
+            .then(setTodos)
+            .catch(console.error);
+    }, []);
+
+     // 저장
+     useEffect(() => {
+        todosStorage
+            .set(todos)
+            .catch(console.error);
+    }, [todos]);
+
+     const onInsert = (text: string) => {
          const nextId = todos.length > 0 ? Math.max(...todos.map(todo => todo.id)) + 1 : 1;
 
          const todo = {
@@ -40,12 +58,17 @@ function App(): React.JSX.Element {
          setTodos(todos.concat(todo));
      };
 
-     const onToggle = (id: any) => {
+     const onToggle = (id: number) => {
          const nextTodos = todos.map(todo =>
          todo.id === id ? {...todo, done: !todo.done} : todo,
          );
          setTodos(nextTodos);
-     }
+     };
+
+     const onRemove = (id: number) => {
+         const nextTodos = todos.filter(todo => todo.id !== id);
+         setTodos(nextTodos);
+     };
 
   return (
     <SafeAreaProvider >
@@ -55,7 +78,7 @@ function App(): React.JSX.Element {
                 style={styles.avoid}
             >
                 <DateHead date={today} />
-                {todos.length === 0 ? <Empty /> : <TodoList todos={todos} onToggle={onToggle} />}
+                {todos.length === 0 ? <Empty /> : <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />}
                 <AddTodo onInsert={onInsert} />
             </KeyboardAvoidingView>
         </SafeAreaView>
