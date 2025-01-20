@@ -2014,6 +2014,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/async-storage@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "@react-native-community/async-storage@npm:1.12.1"
+  dependencies:
+    deep-assign: "npm:^3.0.0"
+  peerDependencies:
+    react: ^16.8
+    react-native: ">=0.59"
+  checksum: 10c0/84f1ac8b6a7192bd96809a1b24b315775324915abe6023f8134b0c207cf5d5cf2460bd99eaf70ff543731f675939e65c3483b2794f3a36c7e2155a8bc2b5ed2a
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:15.1.3":
   version: 15.1.3
   resolution: "@react-native-community/cli-clean@npm:15.1.3"
@@ -2918,6 +2930,7 @@ __metadata:
     "@babel/core": "npm:^7.25.2"
     "@babel/preset-env": "npm:^7.25.3"
     "@babel/runtime": "npm:^7.25.0"
+    "@react-native-community/async-storage": "npm:^1.12.1"
     "@react-native-community/cli": "npm:latest"
     "@react-native-community/cli-platform-android": "npm:15.0.1"
     "@react-native-community/cli-platform-ios": "npm:15.0.1"
@@ -4043,6 +4056,15 @@ __metadata:
     babel-plugin-macros:
       optional: true
   checksum: 10c0/d94bde6e6f780be4da4fd760288fcf755ec368872f4ac5218197200d86430aeb8d90a003a840bff1c20221188e3f23adced0119cb811c6873c70d0ac66d12832
+  languageName: node
+  linkType: hard
+
+"deep-assign@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "deep-assign@npm:3.0.0"
+  dependencies:
+    is-obj: "npm:^1.0.0"
+  checksum: 10c0/bb46602a085e0fcb5077c279c0143d9314cc62723d403c698742a1a765cda7df6635033cbf4ff6fb279f672455e5ff9f91bfd682cc51774b9c971e4260c622fc
   languageName: node
   linkType: hard
 
@@ -5673,6 +5695,13 @@ __metadata:
   version: 7.0.0
   resolution: "is-number@npm:7.0.0"
   checksum: 10c0/b4686d0d3053146095ccd45346461bc8e53b80aeb7671cc52a4de02dbbf7dc0d1d2a986e2fe4ae206984b4d34ef37e8b795ebc4f4295c978373e6575e295d811
+  languageName: node
+  linkType: hard
+
+"is-obj@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "is-obj@npm:1.0.1"
+  checksum: 10c0/5003acba0af7aa47dfe0760e545a89bbac89af37c12092c3efadc755372cdaec034f130e7a3653a59eb3c1843cfc72ca71eaf1a6c3bafe5a0bab3611a47f9945
   languageName: node
   linkType: hard
 
