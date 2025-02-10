@@ -42,7 +42,6 @@ function MainTab() {
                     tabBarIcon: ({color, size}) => (
                         <Icon name="search" size={size} color={color} />
                     ),
-                    headerTitle: () => <SearchHeader />,
                 }}
             />
         </Tab.Navigator>

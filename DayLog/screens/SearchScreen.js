@@ -11,4 +11,4 @@ const styles = StyleSheet.create({
     block: {}
 })
 
-export default SearchScreen;
+export default SearchScreen
