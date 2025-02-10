@@ -1,9 +1,11 @@
 import React, {useContext, useMemo, useState} from 'react';
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, View, Text} from "react-native";
 
 function WriteScreen() {
     return (
-        <View style={styles.block} />
+        <View style={styles.block} >
+            <Text>hi</Text>
+        </View>
     );
 }
 
