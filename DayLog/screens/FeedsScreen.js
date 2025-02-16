@@ -6,11 +6,18 @@ import FeedList from "../components/FeedList";
 
 function FeedsScreen() {
     const {logs} = useContext(LogContext);
+    const [hidden, setHidden] = useState(false);
+
+    const onScrolledToBottom = (isBottom) => {
+        if (hidden !== isBottom) {
+            setHidden(isBottom);
+        }
+    }
     console.log(JSON.stringify(logs, null, 2));
     return (
        <View style={styles.block}>
-           <FeedList logs={logs} />
-           <FloatingWriteButton />
+           <FeedList logs={logs} onScrolledToBottom={onScrolledToBottom} />
+           <FloatingWriteButton hidden={hidden} />
        </View>
     );
 }
