@@ -2,18 +2,21 @@ import React, {useContext, useMemo, useState} from 'react';
 import {StyleSheet, View, Text, TextInput} from 'react-native';
 import LogContext from '../contexts/LogContext';
 import FloatingWriteButton from '../components/FloatingWriteButton';
+import FeedList from "../components/FeedList";
 
 function FeedsScreen() {
-    const {text, setText} = useContext(LogContext);
+    const {logs} = useContext(LogContext);
+    console.log(JSON.stringify(logs, null, 2));
     return (
        <View style={styles.block}>
+           <FeedList logs={logs} />
            <FloatingWriteButton />
        </View>
     );
 }
 
-function Box({children}) {
-    return <View style={styles.box}>{children('Hello World')}</View>;
+function Box() {
+    return <View style={styles.box}>{'Hello World'}</View>;
 }
 
 const styles = StyleSheet.create({
