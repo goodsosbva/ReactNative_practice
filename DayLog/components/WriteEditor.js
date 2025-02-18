@@ -13,7 +13,7 @@ function WriteEditor({title, body, onChangeTitle, onChangeBody}) {
                 onChangeText={onChangeTitle}
                 value={title}
                 onSubmitEditing={() => {
-                    bodyRef.current.focus()
+                    bodyRef.current.focus();
                 }}
             />
             <TextInput
