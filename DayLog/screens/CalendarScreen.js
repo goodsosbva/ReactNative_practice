@@ -1,24 +1,25 @@
-import React, {useContext, useMemo, useState} from 'react';
-import {StyleSheet, Text, View} from "react-native";
-import LogContext from '../contexts/LogContext';
+import React, {useContext, useState} from 'react';
+import {format}  from "date-fns";
+import CalendarView from '../components/CalendarView';
+import LogContext from "../contexts/LogContext";
 
 function CalendarScreen() {
-    const {text} = useContext(LogContext);
+    const {logs} = useContext(LogContext);
+    const [selectedDate, setSelectedDate] = useState(
+        format(new Date(), 'yyyy-MM-dd')
+    )
+    const markedDates = logs.reduce((acc, current) => {
+        const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+        acc[formattedDate] = {marked: true};
+        return acc;
+    }, {});
+
     return (
-       <View style={styles.block}>
-           <Text style={styles.text}>
-               text: {text}
-           </Text>
-       </View>
+        <CalendarView
+            markedDates={markedDates}
+            selectedDate={selectedDate}
+            onSelectedDate={setSelectedDate}
+        />
     );
 }
-
-const styles = StyleSheet.create({
-    block: {},
-    text: {
-        padding: 16,
-        fontSize: 24,
-    },
-});
-
 export default CalendarScreen;
