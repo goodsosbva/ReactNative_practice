@@ -1,6 +1,7 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import {format}  from "date-fns";
 import CalendarView from '../components/CalendarView';
+import FeedList from '../components/FeedList';
 import LogContext from "../contexts/LogContext";
 
 function CalendarScreen() {
@@ -8,17 +9,31 @@ function CalendarScreen() {
     const [selectedDate, setSelectedDate] = useState(
         format(new Date(), 'yyyy-MM-dd')
     )
-    const markedDates = logs.reduce((acc, current) => {
-        const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
-        acc[formattedDate] = {marked: true};
-        return acc;
-    }, {});
+    const markedDates = useMemo(
+        () => logs.reduce((acc, current) => {
+                const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+                acc[formattedDate] = {marked: true};
+                return acc;
+            }
+
+    , {}),
+    [logs]
+    );
+
+    const filteredLogs = logs.filter(
+        (log) => format(new Date(log.date), 'yyyy-MM-dd') === selectedDate,
+    );
 
     return (
-        <CalendarView
-            markedDates={markedDates}
-            selectedDate={selectedDate}
-            onSelectedDate={setSelectedDate}
+        <FeedList
+            logs={filteredLogs}
+            ListHeaderComponent={
+                <CalendarView
+                    markedDates={markedDates}
+                    selectedDate={selectedDate}
+                    onSelectedDate={setSelectedDate}
+                />
+            }
         />
     );
 }

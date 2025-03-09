@@ -2,22 +2,22 @@ import React from 'react';
 import {Calendar} from 'react-native-calendars';
 import {StyleSheet} from 'react-native';
 
-function CalendarView() {
-    const markedDates = {
-        '2025-02-17': {
+function CalendarView({markedDates, selectedDate, onSelectedDate}) {
+    const markedSelectedDate = {
+        ...markedDates,
+        [selectedDate]: {
             selected: true,
-        },
-        '2025-03-18': {
-            marked: true,
-        },
-        '2025-05-05': {
-            marked: true,
+            marked: markedDates[selectedDate]?.marked,
         },
     };
+
     return (
         <Calendar
             style={styles.calendar}
-            markedDates={markedDates}
+            markedDates={markedSelectedDate}
+            onDayPress={(day) => {
+                onSelectedDate(day.dateString);
+            }}
             theme={{
                 selectedDayBackgroundColor: '#009688',
                 arrowColor: '#009688',

@@ -22,10 +22,6 @@ function FeedsScreen() {
     );
 }
 
-function Box() {
-    return <View style={styles.box}>{'Hello World'}</View>;
-}
-
 const styles = StyleSheet.create({
     block: {
         flex: 1,
