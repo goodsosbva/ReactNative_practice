@@ -35,19 +35,6 @@ function WriteHeader({onSave, onAskRemove, isEditing, date, onChangeDate}) {
     const open = (mode) => dispatch({type: 'open', mode});
     const close = () => dispatch({type: 'close'});
 
-    const [mode, setMode] = useState('date');
-    const [visible, setVisible] = useState(false);
-
-    const onPressDate = () => {
-        setMode('date');
-        setVisible(true);
-    }
-
-    const onPressTime = () => {
-        setMode('time');
-        setVisible(true);
-    }
-
     const onConfirm = (selectedDate) => {
         close();
         onChangeDate(selectedDate)
@@ -93,7 +80,7 @@ D                    name="check"
                 </Pressable>
             </View>
             <DateTimePickerModal
-            isVisible={visible}
+            isVisible={state.visible}
             mode={state.mode}
             onConfirm={onConfirm}
             onCancel={close}
