@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90598983801",
+    "project_id": "public-gallery-acb10",
+    "storage_bucket": "public-gallery-acb10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90598983801:android:0d8319dad1931575256ca8",
+        "android_client_info": {
+          "package_name": "com.publicgallerygiantk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPp96tO3KRUwnJLNuIOkCJw5jTQH9EhG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
