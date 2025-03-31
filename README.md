@@ -5,3 +5,6 @@
 
 *학습 정리*
 1. Todo: 기초 적인 투두앱을 만들면서 리액네이티브의 기초를 공부
+    1-1. 기술 스택: ReativeNative, AndroidStudio
+3. DayLog 
+4. publicGalleryGiantK
