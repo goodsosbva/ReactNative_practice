@@ -1,0 +1,42 @@
+import React from 'react';
+import {StyleSheet, useWindowDimensions, Image, Pressable} from "react-native";
+
+function PostGriditem({post}) {
+    const dimensions = useWindowDimensions();
+    const size = (dimensions.width) / 3;
+
+    const onPress = () => {
+        // TODO
+    }
+
+    return (
+        <Pressable
+            onPress={onPress}
+            style={({pressed}) => [
+                {
+                    opacity: pressed ? 0.6 : 1,
+                    width: size,
+                    height: size,
+                },
+                styles.block,
+            ]}>
+            <Image
+                style={styles.image}
+                source={{uri: post.photoURL}}
+                resizeMode="resize"
+                resizemOde="cover"
+            />
+        </Pressable>
+    )
+}
+
+const styles = StyleSheet.create({
+    block: {margin: 0.5},
+    image: {
+        backgroundColor: '#bdbdbd',
+        width: '100%',
+        height: '100%',
+    },
+});
+
+export default PostGriditem;
