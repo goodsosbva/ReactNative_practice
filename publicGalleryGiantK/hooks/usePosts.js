@@ -4,7 +4,7 @@ import {getNewerPosts, getOlderPosts, getPosts, PAGE_SIZE} from "../lib/posts";
 export default function usePosts(userId) {
     const [posts, setPosts] = useState(null);
     const [noMorePost, setNoMorePost] = useState(false);
-    const [refreshing, setRrefreshing] = useState(false);
+    const [refreshing, setRefreshing] = useState(false);
 
     const onLoadMore = async () => {
         if (noMorePost || !posts || posts.length < PAGE_SIZE) {
@@ -24,9 +24,9 @@ export default function usePosts(userId) {
             return;
         }
         const firstPost = posts[0];
-        setRrefreshing(true);
+        setRefreshing(true);
         const newerPosts = await getNewerPosts(firstPost.id, userId);
-        setRrefreshing(false);
+        setRefreshing(false);
         if (newerPosts.length === 0) {
             return;
         }
