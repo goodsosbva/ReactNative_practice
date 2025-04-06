@@ -8,51 +8,35 @@ import {
     Text,
     View,
 } from "react-native";
-import {getNewerPosts, getOlderPosts, getPosts, PAGE_SIZE} from "../lib/posts";
 import {getUser} from "../lib/users";
 import Avatar from "./Avatar";
 import PostGriditem from "./PostGriditem";
+import usePosts from "../hooks/usePosts";
+import {useUserContext} from "../contexts/UserContext";
+import events from '../lib/events';
 
 function Profile({userId}) {
     const [user, setUser] = useState(null);
-    const [posts, setPosts] = useState(null);
+    const {posts, noMorePost, refreshing, onLoadMore, onRefresh, removePost} = usePosts(userId);
 
-    const [noMorePost, setNoMorePost] = useState(false);
-    const [refreshing, setRefreshing] = useState(false);
-
-    const onLoadMore = async () => {
-        if (noMorePost || !posts || posts.length < PAGE_SIZE) {
-            return;
-        }
-        const lastPost = posts[posts.length - 1];
-        const olderPosts = await getOlderPosts(lastPost.id, userId);
-        if (olderPosts.length < PAGE_SIZE) {
-            setNoMorePost(true);
-        }
-        setPosts(posts.concat(olderPosts));
-    };
-
-    const onRefresh = async () => {
-        if (!posts || posts.length === 0 || refreshing) {
-            return;
-        }
-
-        const firstPost = posts[0];
-        setRefreshing(true);
-        const newerPosts = await getNewerPosts(firstPost.id, userId);
-        setRefreshing(false);
-        if (newerPosts.length === 0) {
-            return;
-        }
-        setPosts(newerPosts.concat(posts));
-    }
+    const {user: me} = useUserContext();
+    const isMyProfile = me.id === userId;
 
     useEffect(() => {
         getUser(userId).then(setUser);
-        getPosts({userId}).then((data) => {
-            setPosts(data);
-        });
-    }, [userId, user, posts]);
+    }, [userId]);
+
+    useEffect(() => {
+        if (!isMyProfile) {
+            return;
+        }
+        events.addListener('refresh', onRefresh);
+        events.addListener('removePost', removePost);
+        return () => {
+            events.removeListener('refresh', onRefresh);
+            events.removeListener('removePost', removePost);
+        };
+    }, [removePost, isMyProfile, onRefresh]);
 
     if (!user || !posts) {
         return (

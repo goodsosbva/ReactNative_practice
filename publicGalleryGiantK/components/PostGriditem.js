@@ -1,12 +1,14 @@
+import {useNavigation} from "@react-navigation/native";
 import React from 'react';
 import {StyleSheet, useWindowDimensions, Image, Pressable} from "react-native";
 
 function PostGriditem({post}) {
     const dimensions = useWindowDimensions();
     const size = (dimensions.width) / 3;
+    const navigation = useNavigation();
 
     const onPress = () => {
-        // TODO
+        navigation.navigate('Post', {post});
     }
 
     return (
@@ -23,8 +25,7 @@ function PostGriditem({post}) {
             <Image
                 style={styles.image}
                 source={{uri: post.photoURL}}
-                resizeMode="resize"
-                resizemOde="cover"
+                resizeMode="cover"
             />
         </Pressable>
     )
