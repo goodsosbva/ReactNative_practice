@@ -11,7 +11,6 @@ function App(): React.JSX.Element {
             <RootStack />
         </NavigationContainer>
       </UserContextProvider>
-
   );
 }
 

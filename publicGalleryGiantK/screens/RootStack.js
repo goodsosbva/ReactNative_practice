@@ -6,6 +6,7 @@ import {useUserContext} from "../contexts/UserContext";
 import MainTab from "./MainTab";
 import {getUser, subscribeAuth} from '../lib/users';
 import UploadScreen from "./UploadScreen";
+import ModifyScreen from "./ModifyScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ function RootStack() {
                         headerBackTitle: '뒤로가기',
                     }}
                 />
+                <Stack.Screen name="Modify" component={ModifyScreen} options={{title: '설명 수정', headerBackTitle: '뒤로가기'}} />
             </>
         ) : (
             <>

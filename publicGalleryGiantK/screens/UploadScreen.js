@@ -6,6 +6,7 @@ import {v4} from 'uuid';
 import {createPost} from "../lib/posts";
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {StyleSheet, View, TextInput, Image, useWindowDimensions, Animated, Keyboard, Platform} from "react-native";
+import events from '../lib/events';
 
 function UploadScreen() {
     const route = useRoute();
@@ -32,6 +33,8 @@ function UploadScreen() {
         }
         const photoURL = await reference.getDownloadURL();
         await createPost({description, photoURL, user});
+
+        events.emit('refresh');
     }, [res, user, description, navigation]);
 
 

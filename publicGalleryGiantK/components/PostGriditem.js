@@ -25,8 +25,7 @@ function PostGriditem({post}) {
             <Image
                 style={styles.image}
                 source={{uri: post.photoURL}}
-                resizeMode="resize"
-                resizemOde="cover"
+                resizeMode="cover"
             />
         </Pressable>
     )
