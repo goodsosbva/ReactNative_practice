@@ -20,7 +20,7 @@ export default function usePostActions({id, description}) {
     const remove = async () => {
         await removePost(id);
 
-        if (route.name ==='Post') {
+        if (route.name === 'Post') {
             navigation.pop();
         }
 

@@ -17,7 +17,7 @@ import events from '../lib/events';
 
 function Profile({userId}) {
     const [user, setUser] = useState(null);
-    const {posts, noMorePost, refreshing, onLoadMore, onRefresh, removePost} = usePosts(userId);
+    const {posts, noMorePost, refreshing, onLoadMore, onRefresh} = usePosts(userId);
 
     const {user: me} = useUserContext();
     const isMyProfile = me.id === userId;
@@ -25,18 +25,6 @@ function Profile({userId}) {
     useEffect(() => {
         getUser(userId).then(setUser);
     }, [userId]);
-
-    useEffect(() => {
-        if (!isMyProfile) {
-            return;
-        }
-        events.addListener('refresh', onRefresh);
-        events.addListener('removePost', removePost);
-        return () => {
-            events.removeListener('refresh', onRefresh);
-            events.removeListener('removePost', removePost);
-        };
-    }, [removePost, isMyProfile, onRefresh]);
 
     if (!user || !posts) {
         return (
