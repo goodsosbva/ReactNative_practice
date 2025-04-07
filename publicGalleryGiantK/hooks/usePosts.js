@@ -49,9 +49,25 @@ export default function usePosts(userId) {
         });
     }, [userId]);
 
+    const updatePost = useCallback(
+        ({postId, description}) => {
+            const nextPosts = posts.map((post) =>
+            post.id === postId
+            ? {
+                ...post,
+                description,
+              }
+              : post,
+            );
+            setPosts(nextPosts);
+        },
+        [posts],
+    )
+
     usePostEventEffect({
         refresh: onRefresh,
         removePost,
+        updatePost,
         enabled: !userId || userId === user.id,
     })
 

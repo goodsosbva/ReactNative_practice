@@ -7,6 +7,8 @@ import MainTab from "./MainTab";
 import {getUser, subscribeAuth} from '../lib/users';
 import UploadScreen from "./UploadScreen";
 import ModifyScreen from "./ModifyScreen";
+import SettingScreen from "./SettingScreen";
+import SplashScreen from "react-native-splash-screen";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +19,7 @@ function RootStack() {
         const unsubscribe = subscribeAuth(async currentUser => {
             unsubscribe();
             if(!currentUser) {
+                SplashScreen.hide();
                 return;
             }
             const profile = await getUser(currentUser.uid);
@@ -45,6 +48,7 @@ function RootStack() {
                     }}
                 />
                 <Stack.Screen name="Modify" component={ModifyScreen} options={{title: '설명 수정', headerBackTitle: '뒤로가기'}} />
+                <Stack.Screen name="Setting" component={SettingScreen} options={{title: '설정', headerBackTitle: '뒤로가기'}} />
             </>
         ) : (
             <>
