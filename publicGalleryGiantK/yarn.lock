@@ -8594,6 +8594,7 @@ __metadata:
     react-native-image-picker: "npm:^8.2.0"
     react-native-safe-area-context: "npm:^5.3.0"
     react-native-screens: "npm:^4.9.2"
+    react-native-splash-screen: "npm:^3.3.0"
     react-native-vector-icons: "npm:^10.2.0"
     react-test-renderer: "npm:19.0.0"
     typescript: "npm:5.0.4"
@@ -8738,6 +8739,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/ea285f80c2cf836ee87e09daf91d8c085ccc55726cabb556d278cec76d42e8843943f307549a406f373987f958cf3d35b194eac7bb374b1d9c9876dadcec90cd
+  languageName: node
+  linkType: hard
+
+"react-native-splash-screen@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "react-native-splash-screen@npm:3.3.0"
+  peerDependencies:
+    react-native: ">=0.57.0"
+  checksum: 10c0/0979585b4087dba0825c94393477fc0301210cfa09eae4a98336e91865765f3c774cf8b20c525b3cea74c588e1e4ff0aa9d7500292ad52979670aa59ab83f0a4
   languageName: node
   linkType: hard
 
