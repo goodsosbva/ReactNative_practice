@@ -4,13 +4,15 @@ import {createStore} from 'redux';
 import AuthApp from './components/AuthApp.tsx'
 import TodoApp from "./components/TodoApp.tsx";
 import rootReducer from "./slices";
+import {configureStore} from "@reduxjs/toolkit";
+import PostsApp from './components/PostsApp.tsx';
 
-const store = createStore(rootReducer);
+const store = configureStore({reducer: rootReducer});
 
 function App(): React.JSX.Element {
    return (
        <Provider store={store}>
-          <TodoApp />
+          <PostsApp />
        </Provider>
    )
 
