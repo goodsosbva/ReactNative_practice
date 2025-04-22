@@ -17,6 +17,7 @@
     "react": "19.0.0",
     "react-native": "0.79.0",
     "react-redux": "^9.2.0",
+    "recoil": "0.7.3",
     "redux": "^5.0.1"
   },
   "devDependencies": {
