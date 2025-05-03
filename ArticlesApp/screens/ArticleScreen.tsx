@@ -1,7 +1,7 @@
 import {RouteProp, useRoute} from "@react-navigation/core";
 import React from 'react';
 import {Text, View, ActivityIndicator, StyleSheet, FlatList} from 'react-native'
-import {RootStackParamList} from "./tpyes.ts";
+import {RootStackParamList} from "./types.ts";
 import {useQuery} from "react-query";
 import {getArticle} from "../api/articles.ts";
 import {getComments} from "../api/comments.ts";
