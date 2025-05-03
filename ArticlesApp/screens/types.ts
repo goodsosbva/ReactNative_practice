@@ -26,6 +26,9 @@ export type RootStackParamList = {
     Article: {
         id: number;
     };
+    Register: undefined;
+    Login: undefined;
+    MyArticles: undefined;
 };
 export type RootStackNavigationProp =
     NativeStackNavigationProp<RootStackParamList>;

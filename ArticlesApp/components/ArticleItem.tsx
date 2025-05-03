@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Pressable, Text, View, Platform} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {MainTabNavigationProp} from "../screens/tpyes.ts";
+import {MainTabNavigationProp} from "../screens/types.ts";
 
 export interface ArticleItemProps {
     id: number;
