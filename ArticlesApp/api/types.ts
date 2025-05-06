@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 
 type AuthErrorData = {
-    message: {
+    messages: {
         id: string
         message: string;
     }[];
