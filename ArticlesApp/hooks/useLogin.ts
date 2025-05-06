@@ -5,8 +5,11 @@ import { useNavigation } from '@react-navigation/core';
 import { useUserState } from '../contexts/UserContext';
 import { RootStackNavigationProp } from '../screens/types';
 import { applyToken } from '../api/client';
+import authStorage from '../storages/authStorage';
+import useInform from './useInform';
 
 export default function useLogin() {
+    const inform = useInform();
     const navigation = useNavigation<RootStackNavigationProp>();
     const [, setUser] = useUserState();
 
@@ -15,9 +18,15 @@ export default function useLogin() {
             setUser(data.user);
             navigation.pop();
             applyToken(data.jwt);
-        },
+            authStorage.set(data);
+        },  
         onError: (error: AuthError) => {
-            console.log(error);
+            const message =
+                error.response?.data?.data?.[0]?.messages?.[0]?.message ?? '로그인에 실패했습니다.';
+            inform({
+                title: '오류',
+                message,
+            })
         },
     });
 
