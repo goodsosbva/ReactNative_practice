@@ -7,6 +7,7 @@
     <mapping directory="$PROJECT_DIR$/LearnReactNative" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/LearnReactNavigation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TodoApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/khsReleaseApp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/publicGalleryGiantK" vcs="Git" />
   </component>
 </project>
